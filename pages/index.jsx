@@ -1,7 +1,24 @@
-import dynamic from "next/dynamic";
+import React, {useState} from 'react';
+import style from "src/Content4.module.css";
+import { Comp } from "src/inner/k";
 
-const DynamicContent = dynamic(() => import("../src/Content"));
 
 export default function Index() {
-    return <DynamicContent />
+    const [s] = useState(true);
+
+    if (s) {
+        return
+        <>
+            <div className={style.header}></div>
+                <Comp />
+        </>
+    }
+
+    return null;
+}
+
+export const getServerSideProps = () => {
+    return {
+        props: {}
+    };
 }
