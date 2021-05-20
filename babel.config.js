@@ -11,4 +11,32 @@ module.exports = {
             },
         ],
     ],
+    env: {
+        server: {
+            presets: [
+                [
+                    'next/babel',
+                    {
+                        'preset-env': {
+                            modules: 'commonjs',
+                            targets: {
+                                node: 'current',
+                            },
+                        },
+                    },
+                ],
+            ],
+        },
+        production: {
+            plugins: [
+                'lodash',
+                [
+                    'babel-plugin-graphql-tag',
+                    {
+                        strip: true,
+                    },
+                ],
+            ],
+        },
+    },
 };
